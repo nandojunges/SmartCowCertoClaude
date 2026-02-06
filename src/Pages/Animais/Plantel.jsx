@@ -841,12 +841,20 @@ export default function Plantel({ isOnline = navigator.onLine }) {
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
     },
     container: { width: "100%" },
-    card: {
-      backgroundColor: "transparent",
+    manejosSection: {
+      marginBottom: "24px",
+      overflow: "visible",
       borderRadius: 0,
       border: "none",
       boxShadow: "none",
+      backgroundColor: "transparent",
+    },
+    tableSection: {
       overflow: "visible",
+      borderRadius: 0,
+      border: "none",
+      boxShadow: "none",
+      backgroundColor: "transparent",
     },
     tableContainer: { overflowX: "auto" },
     table: {
@@ -957,15 +965,17 @@ export default function Plantel({ isOnline = navigator.onLine }) {
         {loteAviso && <div style={{...styles.alert, ...styles.alertWarn}}>{loteAviso}</div>}
         {offlineAviso && <div style={{...styles.alert, backgroundColor: "#dbeafe", color: "#1e40af", border: "1px solid #bfdbfe"}}>{offlineAviso}</div>}
 
-        <div style={styles.card}>
+        <div style={styles.manejosSection}>
           <ManejosPendentes />
+        </div>
 
-          {atualizando && hasAnimais && (
-            <div style={{padding: "0 24px 16px", fontSize: "13px", color: "#64748b"}}>
-              Atualizando animais...
-            </div>
-          )}
+        {atualizando && hasAnimais && (
+          <div style={{padding: "0 24px 16px", fontSize: "13px", color: "#64748b"}}>
+            Atualizando animais...
+          </div>
+        )}
 
+        <div style={styles.tableSection}>
           <div style={styles.tableContainer}>
             <table style={styles.table} onMouseLeave={() => { setHoveredRowId(null); setHoveredColKey(null); }}>
               <colgroup>
@@ -1107,8 +1117,8 @@ export default function Plantel({ isOnline = navigator.onLine }) {
                               <span>{idade}</span>
                               <span style={styles.dot}>•</span>
                               <span>Brinco {a.brinco || "—"}</span>
-                            </div>
-                          </div>
+          </div>
+        </div>
                         </div>
                       </td>
 
